@@ -51,8 +51,9 @@ export const getOptions = function () {
     if ($.inArray("FINALIZE", Session.get(Helper.strSessionSelectedOptions)) != -1) {
         const finalize = Helper.getCodeMirrorValue($('#divFinalize'));
         if (finalize.parseFunction() == null) {
-            result["ERROR"] = "Syntax Error on finalize, not a valid ";
-            return;
+            result["ERROR"] = "Syntax Error on finalize, not a valid function";
+        } else {
+            result[Enums.MAP_REDUCE_OPTIONS.FINALIZE] = finalize;
         }
     }
 
